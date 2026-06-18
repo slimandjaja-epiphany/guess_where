@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Guess Where</title>
+
+  <style>
+    html, body, #pano {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="pano"></div>
+
+<script>
+function initPano() {
+  new google.maps.StreetViewPanorama(
+    document.getElementById("pano"),
+    {
+      pano: "dA-MQfp7MBJ5J8gAZ_BFOw",
+      pov: {
+        heading: 90,
+        pitch: 0
+      },
+      zoom: 1,
+      addressControl: false,
+      linksControl: false,
+      clickToGo: false,
+      showRoadLabels: false,
+      fullscreenControl: false,
+      enableCloseButton: false
+    }
+  );
+}
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7SdQoWr8sZBBMeXRjnrVypUX53fYE1o&callback=initPano">
+</script>
+
+</body>
+</html>
