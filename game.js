@@ -1,8 +1,11 @@
+let panorama;
+let currentIndex = 0;
+
 function initPano() {
-  new google.maps.StreetViewPanorama(
+  panorama = new google.maps.StreetViewPanorama(
     document.getElementById("pano"),
     {
-      pano: "dA-MQfp7MBJ5J8gAZ_BFOw",
+      pano: LOCATIONS[currentIndex],
       pov: {
         heading: 90,
         pitch: 0
@@ -16,4 +19,11 @@ function initPano() {
       enableCloseButton: false
     }
   );
+
+  setInterval(nextLocation, 30000);
+}
+
+function nextLocation() {
+  currentIndex = (currentIndex + 1) % LOCATIONS.length;
+  panorama.setPano(LOCATIONS[currentIndex]);
 }
