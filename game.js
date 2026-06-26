@@ -1,5 +1,6 @@
 let panorama;
 let currentIndex = 0;
+const INTERVAL = 30;
 
 function initPano() {
   panorama = new google.maps.StreetViewPanorama(
@@ -20,10 +21,22 @@ function initPano() {
     }
   );
 
-  setInterval(nextLocation, 30000);
+  startCountdown();
 }
 
-function nextLocation() {
-  currentIndex = (currentIndex + 1) % LOCATIONS.length;
-  panorama.setPano(LOCATIONS[currentIndex]);
+function startCountdown() {
+  let timeLeft = INTERVAL;
+  const el = document.getElementById("countdown");
+
+  el.textContent = timeLeft;
+
+  setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 0) {
+      timeLeft = INTERVAL;
+      currentIndex = (currentIndex + 1) % LOCATIONS.length;
+      panorama.setPano(LOCATIONS[currentIndex]);
+    }
+    el.textContent = timeLeft;
+  }, 1000);
 }
