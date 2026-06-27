@@ -1,6 +1,6 @@
 let panorama;
 let currentIndex = 0;
-const INTERVAL = 30;
+const INTERVAL = 7;
 
 function initPano() {
   panorama = new google.maps.StreetViewPanorama(
